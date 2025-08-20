@@ -36,3 +36,6 @@ jobs:
         run: |
           aws s3 rm --recursive s3://aws-web-vite
           aws s3 cp ./dist s3://aws-web-vite/ --recursive
+      
+      - name: CloudFront 캐시 무효화
+        run: aws cloudfront create-invalidation --distribution-id E12EMA05W7UOXW --paths "/*"
